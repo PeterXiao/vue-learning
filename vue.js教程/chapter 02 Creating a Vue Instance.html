@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+	<style>
+		.bg.red
+	</style>
+	<div id="app">
+		<div class="bg">
+			hello world！！
+			{{message}}
+		</div>
+	  {{ message }} {{name}}
+	  
+	  {{count+1}}
+	  
+	  {{template}}
+	  
+	  {{msg1}}
+	  
+	  <a v-bind:href="url">baidu</a>
+	  <button type="button" v-on:click="submit()">加數字</button>
+	  
+	  <button type="button" @click="submit()">加數字</button>
+	  <div v-if="count >2">
+	     count 大于2，count is: {{count}}
+		  
+	  </div>
+	  <div v-else-if="count >2 && count < 6">
+	     count xiaoyu 6 is :{{count}}
+	  </div>
+	  <div v-else>
+      <div v-show="count == 5">show:{{count}}</div>
+		  
+		  count is {{count}}
+	</div>
+	
+	
+	<script type="text/javascript">
+		var arr = 'new  test'
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message: 'Hello Vue!',
+			name : "Peter Show",
+			count: 0,
+			url: 'https://www.baidu.com',
+			template: '<div>hello template</div>',
+			another: 'another Hello Vue!!!'
+		},
+		watch:{
+			message: function(newval, oldval){
+				console.log('newval is:'+newval)
+				console.log('oldval is:'+ oldval)
+			}
+		},
+		computed:{
+			msg1:function(){
+				return 'computered:' + this.message +',' + this.another + arr
+			}
+		},
+		methods:{
+			submit: function(){
+				this.count ++
+			}
+		}
+	});
+	</script>
+
+</body>
+</html>
